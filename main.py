@@ -7,7 +7,7 @@ pygame.display.set_caption('Stopwatch')
 radius = 70
 pause = pygame.image.load('images/pause_btn.png')
 play = pygame.image.load('images/play_btn.png')
-font = pygame.font.SysFont('comicsans', 22)
+font = pygame.font.Font('Montserrat-Regular.ttf', 15)
 
 class Button:
     def __init__(self, x, y, color, type):
@@ -47,27 +47,27 @@ def draw_window():
     reset_btn.draw()
 
     # time
-    font1 = pygame.font.SysFont('comicsans', 40)
+    font2 = pygame.font.Font('Montserrat-Regular.ttf', 40)
 
     if second == -1 and minute == 0 and hour == 0 and day == 0:
-        time = font1.render(f'0', 1, (138, 180, 248))
+        time = font2.render(f'0', 1, (138, 180, 248))
     elif second >= 0:
-        time = font1.render(f'{second}', 1, (138, 180, 248))
+        time = font2.render(f'{second}', 1, (138, 180, 248))
         if minute == 0 and hour == 0 and day == 0:
-            time = font1.render(f'{second}', 1, (138, 180, 248))
+            time = font2.render(f'{second}', 1, (138, 180, 248))
         elif minute > 0 and hour == 0 and day == 0:
-            time = font1.render(f'{minute}:{second}', 1, (138, 180, 248))
+            time = font2.render(f'{minute}:{second}', 1, (138, 180, 248))
         elif hour > 0 and day == 0:
-            time = font1.render(f'{hour}:{minute}:{second}', 1, (138, 180, 248))
+            time = font2.render(f'{hour}:{minute}:{second}', 1, (138, 180, 248))
         elif day > 0:
-            time = font1.render(f'{day}:{hour}:{minute}:{second}', 1, (138, 180, 248))
+            time = font2.render(f'{day}:{hour}:{minute}:{second}', 1, (138, 180, 248))
 
     win.blit(time, (width/2 - time.get_width()/2, height/2-80 - time.get_height()/2))
 
 def main():
     global second, minute, hour, play_pause_btn, reset_btn, day
     play_pause_btn = Button(width/2, height/2+110, (138, 180, 248), 'play_pause')
-    reset_btn = Button(width/2-90, height/2+105, (252,252,252), 'reset')
+    reset_btn = Button(width/2-90, height/2+103, (252,252,252), 'reset')
     run = True
     clock = pygame.time.Clock()
     time = 0
